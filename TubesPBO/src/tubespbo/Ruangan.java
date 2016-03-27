@@ -12,35 +12,36 @@ import java.util.Arrays;
  * @author hariyanto
  */
 public class Ruangan {
+
     private PasienInap[] daftarPasien;
     private int maxPasien;
     private int nPasien = 0;
     private String namaRuangan;
-    
-    public Ruangan(String namaRuangan){
+
+    public Ruangan(String namaRuangan) {
         this.namaRuangan = namaRuangan;
         maxPasien = 4;
         daftarPasien = new PasienInap[maxPasien];
     }
-     
-    public void tambahPasienInap(PasienInap pi){
-        if(nPasien <= maxPasien){
-        this.daftarPasien[nPasien] = pi;
-        nPasien++;
-        }else {
+
+    public void tambahPasienInap(PasienInap pi) {
+        if (nPasien <= maxPasien) {
+            this.daftarPasien[nPasien] = pi;
+            nPasien++;
+        } else {
             System.out.println("Ruangan Penuh");
         }
     }
-    
-    public PasienInap getPasienInapByIndex(int x){
+
+    public PasienInap getPasienInapByIndex(int x) {
         return daftarPasien[x];
     }
-    
-    public void setNama(String namaRuangan){
+
+    public void setNama(String namaRuangan) {
         this.namaRuangan = namaRuangan;
     }
-    
-    public String getNama(){
+
+    public String getNama() {
         return namaRuangan;
     }
 
@@ -52,6 +53,5 @@ public class Ruangan {
     public String toString() {
         return "Ruangan{" + "daftarPasien=" + Arrays.toString(daftarPasien) + ", namaRuangan=" + namaRuangan + '}';
     }
-       
-         
+
 }

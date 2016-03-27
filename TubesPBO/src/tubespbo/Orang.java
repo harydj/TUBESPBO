@@ -10,49 +10,42 @@ package tubespbo;
  * @author x-user
  */
 public abstract class Orang {
+
     private String nama, alamat;
     private long id;
-    
-    public Orang(String nama, long id)
-    {
-        this.nama=nama;
-        this.id=id;
+
+    public Orang(String nama, long id) {
+        this.nama = nama;
+        this.id = id;
     }
-    
-    public Orang(String nama, long id, String alamat)
-    {
-        this.nama=nama;
-        this.id=id;
-        this.alamat=alamat;
+
+    public Orang(String nama, long id, String alamat) {
+        this.nama = nama;
+        this.id = id;
+        this.alamat = alamat;
     }
-    
-    public void setNama(String nama)
-    {
-        this.nama=nama;
+
+    public void setNama(String nama) {
+        this.nama = nama;
     }
-    
-    public String getNama()
-    {
+
+    public String getNama() {
         return nama;
     }
-    
-    public void setId(long id)
-    {
-        this.id=id;
+
+    public void setId(long id) {
+        this.id = id;
     }
-    
-    public long getId()
-    {
+
+    public long getId() {
         return id;
     }
-    
-    public void getAlamat(String alamat)
-    {
-        this.alamat=alamat;
+
+    public void getAlamat(String alamat) {
+        this.alamat = alamat;
     }
-    
-    public String getAlamat()
-    {
+
+    public String getAlamat() {
         return alamat;
     }
 
@@ -60,6 +53,5 @@ public abstract class Orang {
     public String toString() {
         return "Orang{" + "nama=" + nama + ", alamat=" + alamat + ", id=" + id + '}';
     }
-    
-    
+
 }

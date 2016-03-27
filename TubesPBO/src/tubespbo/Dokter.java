@@ -10,16 +10,18 @@ package tubespbo;
  * @author Fiqry
  */
 public class Dokter extends Orang {
+
     private String spesialisasi;
 
     public Dokter(String nama, long id) {
         super(nama, id);
     }
-    
-    public void setSpesialisasi(String spesialisasi){
+
+    public void setSpesialisasi(String spesialisasi) {
         this.spesialisasi = spesialisasi;
     }
-    public String getSpesialisasi(){
+
+    public String getSpesialisasi() {
         return spesialisasi;
     }
 
@@ -27,6 +29,5 @@ public class Dokter extends Orang {
     public String toString() {
         return "Dokter{" + "spesialisasi=" + spesialisasi + '}';
     }
-    
-    
+
 }

@@ -13,8 +13,7 @@ import java.util.Scanner;
  */
 public class Console {
 
-    
-        static void menu(){
+    static void menu() {
         Scanner pil = new Scanner(System.in);
 
         System.out.println("Pilih Menu :");
@@ -23,22 +22,27 @@ public class Console {
         System.out.println("3. Tambah Pasien Inap");
         System.out.println("4. Lihat Data");
         System.out.println("5. Keluar");
-        int x = pil.nextInt();  
-            switch (x) {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    System.out.println("Terima Kasih");
-                    System.exit(0);  
-                default:
-                    System.out.println("pilih ulang");
-                    break;
-            }
+        System.out.println("Pilih Menu : ");
+        int x = pil.nextInt();
+        switch (x) {
+            case 1:
+                System.out.println("Under constructed");
+                break;
+            case 2:
+                System.out.println("Under constructed");
+                break;
+            case 3:
+                System.out.println("Under constructed");
+                break;
+            case 4:
+                System.out.println("Under constructed");
+                break;
+            case 5:
+                System.out.println("Terima Kasih");
+                System.exit(0);
+            default:
+                System.out.println("pilih ulang");
+                break;
+        }
     }
 }
