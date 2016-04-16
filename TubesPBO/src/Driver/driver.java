@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tubespbo;
+package Driver;
 
-import static tubespbo.Console.menu;
-
+import Model.PasienInap;
+import Model.Pasien;
+import Model.Dokter;
+import Model.Ruangan;
+import Console.Console;
 /**
  *
  * @author hariyanto
