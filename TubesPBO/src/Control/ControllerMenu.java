@@ -18,7 +18,8 @@ public class ControllerMenu implements ActionListener{
     Aplikasi model;
     frameMenu mainmenu;
     
-    public ControllerMenu(){
+    public ControllerMenu(Aplikasi model){
+        this.model = model;
         mainmenu = new frameMenu();
         mainmenu.setVisible(true);
         mainmenu.addListener(this);        
@@ -29,6 +30,8 @@ public class ControllerMenu implements ActionListener{
         Object source = e.getSource();
         if (source.equals(mainmenu.getBtndok())) {
             new ControllerDokter(model);
+            mainmenu.dispose();
+        } else if(source.equals(mainmenu.getBtnexit())) {
             mainmenu.dispose();
         }
     }

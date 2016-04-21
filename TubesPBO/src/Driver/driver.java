@@ -57,7 +57,7 @@ public class driver {
        // r1.tambahPasienInap(pi01);
        // r1.tambahPasienInap(pi02);
 
-       // Console.menu();
-       new ControllerMenu();
+      //^  Console.menu();
+       new ControllerMenu(model);
     }
 }

@@ -12,14 +12,14 @@ package Model;
 public abstract class Orang {
 
     private String nama, alamat;
-    private long id;
+    private String id;
 
-    public Orang(String nama, long id) {
+    public Orang(String nama, String id) {
         this.nama = nama;
         this.id = id;
     }
 
-    public Orang(String nama, long id, String alamat) {
+    public Orang(String nama, String id, String alamat) {
         this.nama = nama;
         this.id = id;
         this.alamat = alamat;
@@ -33,11 +33,11 @@ public abstract class Orang {
         return nama;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 

@@ -8,6 +8,7 @@ package View;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,6 +31,12 @@ public class frameDokter extends javax.swing.JFrame {
         return btnsimpan;
     }
 
+    public JButton getBtnhome() {
+        return btnhome;
+    }
+    
+    
+
     public String getid() {
         return tfid.getText();
     }
@@ -47,7 +54,7 @@ public class frameDokter extends javax.swing.JFrame {
     }
 
     public void setnama(String s) {
-        tfid.setText(s);
+        tfnama.setText(s);
     }
 
     public void setspesial(String s) {
@@ -66,11 +73,23 @@ public class frameDokter extends javax.swing.JFrame {
         return tfspesial;
     }
     
+    public void setModel(DefaultTableModel e){
+        tdokter.setModel(e);
+    }
     
+    public String[] getnamakolom(){
+        String [] namakolom = {"ID", "Nama", "Spesialisasi"};
+        return namakolom;
+    }
+    
+    public int getSelectedRow(){
+        return tdokter.getSelectedRow();
+    }   
 
     public void addListener(ActionListener e){
         btnsimpan.addActionListener(e);
         btnhapus.addActionListener(e);
+        btnhome.addActionListener(e);
     }
     
     
@@ -90,6 +109,7 @@ public class frameDokter extends javax.swing.JFrame {
         btnhapus = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tdokter = new javax.swing.JTable();
+        btnhome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,12 +148,17 @@ public class frameDokter extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tdokter);
 
+        btnhome.setText("Home");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 15, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -146,7 +171,6 @@ public class frameDokter extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfnama, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tfid, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addComponent(btnsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,22 +178,26 @@ public class frameDokter extends javax.swing.JFrame {
                                             .addComponent(btnhapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addComponent(tfspesial, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(86, 86, 86)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(164, 164, 164)
                                 .addComponent(jLabel5)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 15, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(btnhome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(9, 9, 9)
                 .addComponent(jLabel5)
-                .addGap(8, 8, 8)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -187,7 +215,9 @@ public class frameDokter extends javax.swing.JFrame {
                     .addComponent(btnhapus))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnhome)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -197,6 +227,7 @@ public class frameDokter extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnhapus;
+    private javax.swing.JButton btnhome;
     private javax.swing.JButton btnsimpan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

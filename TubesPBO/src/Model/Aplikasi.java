@@ -9,6 +9,7 @@ package Model;
  *
  * @author hariyanto
  */
+import Database.Database;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -17,6 +18,7 @@ public class Aplikasi {
    private ArrayList<Dokter> daftarDokter;
    private ArrayList<PasienInap> daftarPasienInap;
    private ArrayList<Ruangan> daftarRuangan;
+   private Database con;
     
    
     public Aplikasi() {
@@ -24,11 +26,11 @@ public class Aplikasi {
         this.daftarDokter = new ArrayList<>();
         this.daftarPasienInap = new ArrayList<>();
         this.daftarRuangan = new ArrayList<>();
-        //this.con = new Database();
-        //con.connect();
+        this.con = new Database();
+        con.connect();
     }
     
-    public void createPasien(String nama,long id, String alamat) {
+    public void createPasien(String nama,String id, String alamat) {
         Pasien p = new Pasien(nama,id,alamat);
         daftarPasien.add(p);
         //con.savePelanggan(p);
@@ -39,9 +41,9 @@ public class Aplikasi {
         //return p.getIdPelanggan();
     }
     
-    public Pasien getPasien(long idP) {
+    public Pasien getPasien(String idP) {
         for (Pasien p : daftarPasien) {
-            if (p.getId() == idP) {
+            if (p.getId().length() == idP.length()) {
                 return p;
             }
         }
@@ -64,10 +66,10 @@ public class Aplikasi {
         }
     }
     
-    public void deletePasien(long idp){
+    public void deletePasien(String idp){
         int x =0;
         for(Pasien p : daftarPasien){
-            if(p.getId() == idp){
+            if(p.getId().length() == idp.length()){
                 break;
             }
             x++;
@@ -76,9 +78,9 @@ public class Aplikasi {
             
     }
     
-    public void cariPasien(long idp){
+    public void cariPasien(String idp){
         for(Pasien p : daftarPasien){
-            if(p.getId() == idp){
+            if(p.getId().length() == idp.length()){
                 System.out.println("Data Ditemukan :");
                 System.out.println("==============================");
                 System.out.println("ID           : "+p.getId());
@@ -89,29 +91,25 @@ public class Aplikasi {
         }
     }
     
-    public void createDokter(String nama,long id,String spesialisasi) {
+    public void createDokter(String nama,String id,String spesialisasi) {
         Dokter d = new Dokter(nama,id);
         d.setSpesialisasi(spesialisasi);
         daftarDokter.add(d);
-        //con.savePelanggan(p);
-        
-        //con.savePelanggan(daftarPelanggan.get(index));
-        
-        //return daftarPelanggan.get(index).getIdPelanggan();
-        //return p.getIdPelanggan();
+        con.saveDokter(d);      
     }
     
-    public Dokter getDokter(long idP) {
+    public Dokter getDokter(String idP) {
         for (Dokter d : daftarDokter) {
-            if (d.getId() == idP) {
+            if (d.getId().length() == idP.length()) {
                 return d;
             }
         }
-        return null;        
-        //Pasien p = con.getPasien(idP);
-        //daftarPasien.add(p);
-        //return p;
+      
+        Dokter d = con.getDokter(idP);
+        daftarDokter.add(d);
+        return d;
     }
+    
     
     public void lihatDokter(){
         System.out.println("Data Dokter :");
@@ -126,10 +124,15 @@ public class Aplikasi {
         }
     }
     
-    public void deleteDokter(long idp){
+     public ArrayList<Dokter> getALLDokter(){ 
+         daftarDokter = con.getTabelDokter();
+         return daftarDokter; 
+    }
+    
+    public void deleteDokter(String idp){
         int x =0;
         for(Dokter d : daftarDokter){
-            if(d.getId() == idp){
+            if(d.getId().length() == idp.length()){
                 break;
             }
             x++;
@@ -138,9 +141,13 @@ public class Aplikasi {
             
     }
     
-    public void cariDokter(long idp){
+    public void deleteDataDokter(int index){
+        daftarDokter.remove(index);
+    }
+    
+    public void cariDokter(String idp){
         for(Dokter d : daftarDokter){
-            if(d.getId() == idp){
+            if(d.getId().length() == idp.length()){
                 System.out.println("Data Ditemukan :");
                 System.out.println("==============================");
                 System.out.println("ID           : "+d.getId());
@@ -201,7 +208,7 @@ public class Aplikasi {
         }
     }
     
-    public void tambahPasienInap(String noRuang,long idpas){
+    public void tambahPasienInap(String noRuang,String idpas){
         try{
             PasienInap pi = getPasienInap(idpas);
             Ruangan r = getRuangan(noRuang);
@@ -211,7 +218,7 @@ public class Aplikasi {
         }
     }
     
-    public void createPasienInap(long idpas,long iddok,String diagnosa){
+    public void createPasienInap(String idpas,String iddok,String diagnosa){
         if(this.getPasien(idpas) == null || this.getDokter(iddok) == null){
             System.out.println("Pasien atau Dokter tidak terdaftar");
         }
@@ -224,9 +231,9 @@ public class Aplikasi {
         
     }
     
-     public PasienInap getPasienInap(long idP) {
+     public PasienInap getPasienInap(String idP) {
         for (PasienInap pi : daftarPasienInap) {
-            if (pi.getPasien().getId() == idP) {
+            if (pi.getPasien().getId().length() == idP.length()) {
                 return pi;
             }
         }
@@ -248,10 +255,10 @@ public class Aplikasi {
         }
     }
      
-     public void deletePasienInap(long idp){
+     public void deletePasienInap(String idp){
         int x =0;
         for(PasienInap pi : daftarPasienInap){
-            if(pi.getPasien().getId() == idp){
+            if(pi.getPasien().getId().length() == idp.length()){
                 break;
             }
             x++;

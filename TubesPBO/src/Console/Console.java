@@ -47,7 +47,7 @@ public class Console {
                         System.out.println("Spesialisasi :");
                         String l = input.nextLine();
                         System.out.println("ID Dokter : ");
-                        long i = input.nextInt();
+                        String i = input.nextLine();
                         
                         
                         model.createDokter(s,i,l);
@@ -58,12 +58,12 @@ public class Console {
                         break;
                     case 3:
                         System.out.println("Masukkan ID Dokter : ");
-                        long v = input.nextInt();
+                        String v = input.nextLine();
                         model.deleteDokter(v);
                         break;
                     case 4:
                         System.out.println("Masukkan ID Dokter yang dicari : ");
-                        long w = input.nextInt();
+                        String w = input.nextLine();
                         model.cariDokter(w);
                }
                 }
@@ -87,7 +87,7 @@ public class Console {
                         System.out.println("Alamat :");                                                                                         
                         String l = input.nextLine();
                         System.out.println("ID : ");
-                        long i = input.nextInt();
+                        String i = input.nextLine();
                         
                         
                         model.createPasien(s,i,l);
@@ -98,13 +98,13 @@ public class Console {
                         break;
                     case 3:
                         System.out.println("Masukkan ID Pasien : ");
-                        long o = input.nextInt();
+                        String o = input.nextLine();
                         model.deletePasien(o);
                         input = new Scanner(System.in);
                         break;
                     case 4:
                         System.out.println("Masukkan ID Pasien yang dicari : ");
-                        long w = input.nextInt();
+                        String w = input.nextLine();
                         model.cariPasien(w);
                         input = new Scanner(System.in);
                         break;
@@ -127,9 +127,9 @@ public class Console {
                         System.out.println("Masukkan Diagnosa : ");
                         String u = input.nextLine();
                         System.out.println("Masukkan ID Pasien : ");
-                        long o = input.nextInt();
+                        String o = input.nextLine();
                         System.out.println("Masukkan ID Dokter yang Memeriksa");
-                        long w = input.nextInt();                      
+                        String w = input.nextLine();                      
                         model.createPasienInap(o,w,u);
                         input = new Scanner(System.in);
                         break;
@@ -138,7 +138,7 @@ public class Console {
                         break;
                     case 3:
                         System.out.println("Masukkan ID Pasien : ");
-                        long k = input.nextInt();
+                        String k = input.nextLine();
                         model.deletePasienInap(k);
                         input = new Scanner(System.in);
                         break;
@@ -168,7 +168,7 @@ public class Console {
                         System.out.println("Pilih ID Ruangan : ");
                         String ir = input.nextLine();
                         System.out.println("Masukkan ID Pasien Inap : ");
-                        long d = input.nextInt();
+                        String d = input.nextLine();
                         model.tambahPasienInap(ir, d);
                         break;
                     case 3:

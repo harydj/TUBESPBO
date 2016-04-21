@@ -14,7 +14,7 @@ public class Pasien extends Orang {
     private String tanggalDatang;
     private String keluhan;
 
-    public Pasien(String nama, long id, String alamat) {
+    public Pasien(String nama, String id, String alamat) {
         super(nama, id, alamat);
     }
 
@@ -37,12 +37,12 @@ public class Pasien extends Orang {
     }
 
     @Override
-    public void setId(long id) {
+    public void setId(String id) {
         super.setId(id);
     }
 
     @Override
-    public long getId() {
+    public String getId() {
         return super.getId();
     }
 

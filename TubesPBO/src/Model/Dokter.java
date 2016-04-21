@@ -13,7 +13,7 @@ public class Dokter extends Orang {
 
     private String spesialisasi;
 
-    public Dokter(String nama, long id) {
+    public Dokter(String nama, String id) {
         super(nama, id);
     }
 
@@ -36,12 +36,12 @@ public class Dokter extends Orang {
     }
 
     @Override
-    public void setId(long id) {
+    public void setId(String id) {
         super.setId(id);
     }
 
     @Override
-    public long getId() {
+    public String getId() {
         return super.getId();
     }
 
