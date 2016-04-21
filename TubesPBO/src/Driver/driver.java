@@ -6,6 +6,8 @@
 package Driver;
 
 import Console.Console;
+import Control.ControllerMenu;
+import Model.Aplikasi;
 import Model.Dokter;
 import Model.Pasien;
 import Model.PasienInap;
@@ -18,6 +20,8 @@ import Model.Ruangan;
 public class driver {
 
     public static void main(String[] args) {
+        
+        Aplikasi model = new Aplikasi();
 
         //Ruangan r1 = new Ruangan("Garuda","r001");
         //Ruangan r2 = new Ruangan("Elang","r002");
@@ -53,7 +57,7 @@ public class driver {
        // r1.tambahPasienInap(pi01);
        // r1.tambahPasienInap(pi02);
 
-        Console.menu();
-
+       // Console.menu();
+       new ControllerMenu();
     }
 }
