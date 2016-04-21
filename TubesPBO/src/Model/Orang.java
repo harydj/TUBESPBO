@@ -41,7 +41,7 @@ public abstract class Orang {
         return id;
     }
 
-    public void getAlamat(String alamat) {
+    public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
 

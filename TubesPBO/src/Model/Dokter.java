@@ -24,6 +24,26 @@ public class Dokter extends Orang {
     public String getSpesialisasi() {
         return spesialisasi;
     }
+    
+        @Override
+    public void setNama(String nama) {
+        super.setNama(nama);
+    }
+
+    @Override
+    public String getNama() {
+        return super.getNama();
+    }
+
+    @Override
+    public void setId(long id) {
+        super.setId(id);
+    }
+
+    @Override
+    public long getId() {
+        return super.getId();
+    }
 
     @Override
     public String toString() {

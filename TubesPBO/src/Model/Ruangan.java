@@ -17,9 +17,11 @@ public class Ruangan {
     private int maxPasien;
     private int nPasien = 0;
     private String namaRuangan;
+    private String noRuang;
 
-    public Ruangan(String namaRuangan) {
+    public Ruangan(String namaRuangan,String noRuang) {
         this.namaRuangan = namaRuangan;
+        this.noRuang = noRuang;
         maxPasien = 4;
         daftarPasien = new PasienInap[maxPasien];
     }
@@ -32,6 +34,7 @@ public class Ruangan {
             System.out.println("Ruangan Penuh");
         }
     }
+    
 
     public PasienInap getPasienInapByIndex(int x) {
         return daftarPasien[x];
@@ -45,8 +48,22 @@ public class Ruangan {
         return namaRuangan;
     }
 
+    public void setNoRuang(String noRuang) {
+        this.noRuang = noRuang;
+    }
+    
+
+    public String getNoRuang() {
+        return noRuang;
+    }
+    
+
     public PasienInap[] getDaftarPasien() {
         return daftarPasien;
+    }
+
+    public int getnPasien() {
+        return nPasien;
     }
 
     @Override

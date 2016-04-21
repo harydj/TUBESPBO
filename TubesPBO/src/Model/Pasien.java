@@ -18,20 +18,41 @@ public class Pasien extends Orang {
         super(nama, id, alamat);
     }
 
-    public void setTanggalDatang(String tanggalDatang) {
-        this.tanggalDatang = tanggalDatang;
-    }
-
-    public String getTanggalDatang() {
-        return tanggalDatang;
-    }
-
     public void setKeluhan(String keluhan) {
         this.keluhan = keluhan;
     }
 
     public String getKeluhan() {
         return keluhan;
+    }
+    
+    @Override
+    public void setNama(String nama) {
+        super.setNama(nama);
+    }
+
+    @Override
+    public String getNama() {
+        return super.getNama();
+    }
+
+    @Override
+    public void setId(long id) {
+        super.setId(id);
+    }
+
+    @Override
+    public long getId() {
+        return super.getId();
+    }
+
+    @Override
+    public void setAlamat(String alamat){
+        super.setAlamat(alamat);
+    }
+    @Override
+    public String getAlamat() {
+        return super.getAlamat();
     }
 
     @Override

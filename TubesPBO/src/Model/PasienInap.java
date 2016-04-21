@@ -15,7 +15,7 @@ public class PasienInap {
 
     private Pasien pasien;
     private Dokter dokter;
-    private String[] diagnosa;
+    private String diagnosa;
     private int ndiagnosa = 0;
 
     public PasienInap(Pasien pasien) {
@@ -35,22 +35,16 @@ public class PasienInap {
     }
 
     public void addDiagnosa(String d) {
-//        diagnosa[ndiagnosa] = d;
-        ndiagnosa++;
+        this.diagnosa = d;
+
     }
 
-    public String getDiagnosaByIndex(int x) {
-        return diagnosa[x];
+    public String getDiagnosa() {
+        return diagnosa;
     }
 
     public void deleteDiagnosa(String d) {
-        int y = 0;
-        while (y <= 5) {
-            if (diagnosa[y] != d) {
-                y++;
-            }
-            diagnosa[y] = null;
-        }
+        d = null;
     }
 
     public Pasien getPasien() {
@@ -59,7 +53,7 @@ public class PasienInap {
 
     @Override
     public String toString() {
-        return "PasienInap{" + "pasien=" + pasien + ", dokter=" + dokter + ", diagnosa=" + Arrays.toString(diagnosa) + ", ndiagnosa=" + ndiagnosa + '}';
+        return "PasienInap{" + "pasien=" + pasien + ", dokter=" + dokter + ", diagnosa=" + diagnosa + ", ndiagnosa=" + ndiagnosa + '}';
     }
 
 }
