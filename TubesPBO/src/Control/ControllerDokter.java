@@ -68,12 +68,19 @@ public class ControllerDokter implements ActionListener , FocusListener{
             String id = fdok.getid();
             String spesialisasi = fdok.getspesial();
             if(d == null){
+            if((id.length()==0) || (nama.length() == 0) || (spesialisasi.length()==0)){
+                JOptionPane.showMessageDialog(fdok, "field tidak boleh kosong");
+            }else{
             model.createDokter(nama,id,spesialisasi);
+            }
             }
             viewDataTabel();
             ClearTextField();      
         } else if(source.equals(fdok.getBtnhapus())){
-            model.deleteDataDokter(fdok.getSelectedRow()); 
+            int row = fdok.getSelectedRow();
+            int col = fdok.getSelectedColumn();
+            String value = fdok.getValue(row, col);
+            model.deleteDataDokter(row,value); 
             viewDataTabel(); 
         } else if(source.equals(fdok.getBtnhome())){
             new ControllerMenu(model);

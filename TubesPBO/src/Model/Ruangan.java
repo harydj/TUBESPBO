@@ -19,7 +19,7 @@ public class Ruangan {
     private String namaRuangan;
     private String noRuang;
 
-    public Ruangan(String namaRuangan,String noRuang) {
+    public Ruangan(String noRuang,String namaRuangan) {
         this.namaRuangan = namaRuangan;
         this.noRuang = noRuang;
         maxPasien = 4;

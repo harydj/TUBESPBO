@@ -88,9 +88,11 @@ public class Console {
                         String l = input.nextLine();
                         System.out.println("ID : ");
                         String i = input.nextLine();
+                        System.out.println("Keluhan :");
+                        String k = input.nextLine();
                         
                         
-                        model.createPasien(s,i,l);
+                        model.createPasien(s,i,l,k);
                         input = new Scanner(System.in);
                         break;
                     case 2:

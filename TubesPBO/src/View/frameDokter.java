@@ -35,8 +35,6 @@ public class frameDokter extends javax.swing.JFrame {
         return btnhome;
     }
     
-    
-
     public String getid() {
         return tfid.getText();
     }
@@ -80,6 +78,15 @@ public class frameDokter extends javax.swing.JFrame {
     public String[] getnamakolom(){
         String [] namakolom = {"ID", "Nama", "Spesialisasi"};
         return namakolom;
+    }
+    
+    public int getSelectedColumn(){
+        return tdokter.getSelectedColumn();
+    }
+    
+    public String getValue(int row, int col){
+        Object value = tdokter.getValueAt(row,col);
+        return value.toString();
     }
     
     public int getSelectedRow(){
@@ -186,8 +193,8 @@ public class frameDokter extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(btnhome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96)
+                .addComponent(btnhome, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -217,7 +224,7 @@ public class frameDokter extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnhome)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

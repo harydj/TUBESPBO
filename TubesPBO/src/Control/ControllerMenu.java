@@ -31,7 +31,16 @@ public class ControllerMenu implements ActionListener{
         if (source.equals(mainmenu.getBtndok())) {
             new ControllerDokter(model);
             mainmenu.dispose();
-        } else if(source.equals(mainmenu.getBtnexit())) {
+        } else if(source.equals(mainmenu.getBtnp())) {
+            new ControllerPasien(model);
+            mainmenu.dispose();
+        }else if(source.equals(mainmenu.getBtnpi())) {
+            new ControllerPasienInap(model);
+            mainmenu.dispose();
+        }else if(source.equals(mainmenu.getBtnr())) {
+            new ControllerRuangan(model);
+            mainmenu.dispose();
+        }else if(source.equals(mainmenu.getBtnexit())) {
             mainmenu.dispose();
         }
     }

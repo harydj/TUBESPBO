@@ -13,18 +13,26 @@ import java.util.Arrays;
  */
 public class PasienInap {
 
-    private Pasien pasien;
+    private String idpas;
+    private String iddok;
     private Dokter dokter;
     private String diagnosa;
     private int ndiagnosa = 0;
 
-    public PasienInap(Pasien pasien) {
-        this.pasien = pasien;
+    public PasienInap(String idpas, String iddok) {
+        this.idpas = idpas;
+        this.iddok = iddok;
     }
 
-    public void setPasien(Pasien pasien) {
-        this.pasien = pasien;
+    public String getIdpas() {
+        return idpas;
     }
+
+    public String getIddok() {
+        return iddok;
+    }
+
+
 
     public void setDokter(Dokter d) {
         dokter = d;
@@ -47,13 +55,12 @@ public class PasienInap {
         d = null;
     }
 
-    public Pasien getPasien() {
-        return pasien;
-    }
-
     @Override
     public String toString() {
-        return "PasienInap{" + "pasien=" + pasien + ", dokter=" + dokter + ", diagnosa=" + diagnosa + ", ndiagnosa=" + ndiagnosa + '}';
+        return "PasienInap{" + "idpas=" + idpas + ", iddok=" + iddok + ", dokter=" + dokter + ", diagnosa=" + diagnosa + ", ndiagnosa=" + ndiagnosa + '}';
     }
+
+
+    
 
 }

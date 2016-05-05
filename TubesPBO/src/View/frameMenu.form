@@ -32,12 +32,10 @@
               <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnexit" pref="125" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnr" max="32767" attributes="0"/>
-                      <Component id="btnpi" pref="125" max="32767" attributes="0"/>
-                      <Component id="btndok" max="32767" attributes="0"/>
-                      <Component id="btnp" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="btnr" max="32767" attributes="0"/>
+                  <Component id="btnpi" pref="125" max="32767" attributes="0"/>
+                  <Component id="btndok" max="32767" attributes="0"/>
+                  <Component id="btnp" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>

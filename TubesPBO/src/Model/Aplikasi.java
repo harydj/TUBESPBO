@@ -12,6 +12,7 @@ package Model;
 import Database.Database;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 public class Aplikasi {
    private ArrayList<Pasien> daftarPasien;
@@ -30,15 +31,11 @@ public class Aplikasi {
         con.connect();
     }
     
-    public void createPasien(String nama,String id, String alamat) {
+    public void createPasien(String nama,String id, String alamat,String keluhan) {
         Pasien p = new Pasien(nama,id,alamat);
+        p.setKeluhan(keluhan);
         daftarPasien.add(p);
-        //con.savePelanggan(p);
-        
-        //con.savePelanggan(daftarPelanggan.get(index));
-        
-        //return daftarPelanggan.get(index).getIdPelanggan();
-        //return p.getIdPelanggan();
+        con.savePasien(p);
     }
     
     public Pasien getPasien(String idP) {
@@ -78,6 +75,16 @@ public class Aplikasi {
             
     }
     
+    public void deleteDataPasien(int index, String idPas){
+        daftarPasien.remove(index);
+        con.deletePasien(idPas);
+    }
+    
+    public ArrayList<Pasien> getALLPasien(){ 
+         daftarPasien = con.getTabelPasien();
+         return daftarPasien; 
+    }
+    
     public void cariPasien(String idp){
         for(Pasien p : daftarPasien){
             if(p.getId().length() == idp.length()){
@@ -104,10 +111,10 @@ public class Aplikasi {
                 return d;
             }
         }
-      
-        Dokter d = con.getDokter(idP);
-        daftarDokter.add(d);
-        return d;
+        return null;
+        //Dokter d = con.getDokter(idP);
+        //daftarDokter.add(d);
+        //return d;
     }
     
     
@@ -141,8 +148,9 @@ public class Aplikasi {
             
     }
     
-    public void deleteDataDokter(int index){
+    public void deleteDataDokter(int index, String idDok){
         daftarDokter.remove(index);
+        con.deleteDokter(idDok);
     }
     
     public void cariDokter(String idp){
@@ -158,9 +166,10 @@ public class Aplikasi {
         }
     }
     
-    public void createRuangan(String namaRuangan, String noRuang){
-        Ruangan r = new Ruangan(namaRuangan,noRuang);
+    public void createRuangan(String noRuang, String namaRuangan){
+        Ruangan r = new Ruangan(noRuang,namaRuangan);
         daftarRuangan.add(r);
+        con.saveRuangan(r);
     }
     
     public Ruangan getRuangan(String noRuang){
@@ -184,8 +193,7 @@ public class Aplikasi {
             System.out.println("Nama Ruang              : "+r.getNama());
             while(xi < r.getnPasien()){
             System.out.println("Pasien Inap "+yi+"            ");
-            System.out.println("ID                      : "+r.getPasienInapByIndex(xi).getPasien().getId());
-            System.out.println("Nama                    : "+r.getPasienInapByIndex(xi).getPasien().getNama());
+            System.out.println("ID                      : "+r.getPasienInapByIndex(xi).getIdpas());
             xi++;
             yi++;
             }
@@ -214,26 +222,22 @@ public class Aplikasi {
             Ruangan r = getRuangan(noRuang);
             r.tambahPasienInap(pi);     
         } catch(NullPointerException e){
-            System.out.println("Pasien atau ruangan tidak terdaftar");
+            JOptionPane.showMessageDialog(null, "Pasien atau Dokter tidak terdaftar");
         }
     }
     
     public void createPasienInap(String idpas,String iddok,String diagnosa){
-        if(this.getPasien(idpas) == null || this.getDokter(iddok) == null){
-            System.out.println("Pasien atau Dokter tidak terdaftar");
-        }
-        Pasien p1 = this.getPasien(idpas);
-        PasienInap pi = new PasienInap(p1);
-        Dokter d1 = this.getDokter(iddok);
-        pi.setDokter(d1);
+        PasienInap pi = new PasienInap(idpas,iddok);
         pi.addDiagnosa(diagnosa);
         daftarPasienInap.add(pi);
+        con.savePasienInap(pi);
+
         
     }
     
      public PasienInap getPasienInap(String idP) {
         for (PasienInap pi : daftarPasienInap) {
-            if (pi.getPasien().getId().length() == idP.length()) {
+            if (pi.getIdpas().length() == idP.length()) {
                 return pi;
             }
         }
@@ -242,13 +246,33 @@ public class Aplikasi {
         //daftarPasien.add(p);
         //return p;
     }
+     
+      public ArrayList<PasienInap> getALLPasienInap(){ 
+         daftarPasienInap = con.getTabelPasienInap();
+         return daftarPasienInap; 
+    }
+      
+      public ArrayList<Ruangan> getALLRuangan(){ 
+         daftarRuangan = con.getTabelRuangan();
+         return daftarRuangan; 
+    }
+         
+      public void deleteDataPasienInap(int index, String idPas){
+        daftarPasienInap.remove(index);
+        con.deletePasienInap(idPas);
+    }
+      
+        public void deleteDataRuangan(int index, String noRuang){
+        daftarRuangan.remove(index);
+        con.deleteRuangan(noRuang);
+    }
     
      public void lihatPasienInap(){
         System.out.println("Data Pasien Inap : ");      
         for (PasienInap py : daftarPasienInap) {
             System.out.println("==============================");
-            System.out.println("ID Pasien               : "+py.getPasien().getId());
-            System.out.println("Dokter Pemeriksa        : "+py.getDokter().getNama());
+            System.out.println("ID Pasien               : "+py.getIdpas());
+            System.out.println("Dokter Pemeriksa        : "+py.getIddok());
             System.out.println("Diagnosa                : "+py.getDiagnosa());
             System.out.println("==============================");
             System.out.println("\n");
@@ -258,7 +282,7 @@ public class Aplikasi {
      public void deletePasienInap(String idp){
         int x =0;
         for(PasienInap pi : daftarPasienInap){
-            if(pi.getPasien().getId().length() == idp.length()){
+            if(pi.getIdpas().length() == idp.length()){
                 break;
             }
             x++;
